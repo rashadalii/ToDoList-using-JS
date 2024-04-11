@@ -49,13 +49,13 @@ function filter(e) {
 function allTodosClear() {
     const todoLists =document.querySelectorAll(".list-group-item");
     if (todoLists.length>0) {
-        // Ui dan silme
+        // Delete from UI
         todoLists.forEach(function (todo) {
             todo.remove();
             
         });
 
-        // Storagedan silme
+        // Deelete from Storage
         todos=[];
         localStorage.setItem("todos",JSON.stringify(todos));
         showAlert("success","Butun todolar ugurla silindi");
@@ -70,11 +70,11 @@ function allTodosClear() {
 
 function removeTodoToUI(e) {
     if (e.target.className==="fa fa-remove") {
-        // UI-dan silme
+        // Delete from UI
         const todo=e.target.parentElement.parentElement;
         todo.remove();
 
-        // storagedan silme
+        // Deelete from LocalStorage
         removeTodoToStorage(todo.textContent);
         showAlert("success","Todo ugurla silindi.");
     }
@@ -94,12 +94,12 @@ function addTodo(e){
     if(inputText==null || inputText==""){
         showAlert("warning","Zehmet olmasa bosh saxlamayin!")
     }else{
-    //   interfeyse elave et
+    //   Add to UI
     addTodoToUI(inputText);
     addTodoToStorage(inputText);
     showAlert("success","Todo Elave edildi.");
     }
-    // storage elave etmek
+    // Add to LocalStorage
     e.preventDefault();
 }
 
